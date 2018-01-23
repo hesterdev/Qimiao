@@ -1,0 +1,60 @@
+﻿<metro:MetroWindow x:Class="WndTop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WndTop"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="244.218" Width="309.079" WindowStartupLocation="CenterScreen"
+                   
+        BorderBrush="{DynamicResource AccentColorBrush}"
+        BorderThickness="1"
+        
+                   
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+                   IsMaxRestoreButtonEnabled="False" 
+                   
+                   Icon="logo.ico"
+                   ShowIconOnTitleBar="True" Topmost="True"
+        >
+    <Grid>
+        <ToggleButton x:Name="btnTop"
+            IsChecked="False"
+            Style="{StaticResource MyToggle}"    
+            ToolTip="MaterialDesignFlatPrimaryToggleButton" Margin="29,27,230,102"
+             >
+            <materialDesign:PackIcon Kind="Pin" Height="21" Width="21" RenderTransformOrigin=".5,.5">
+                <materialDesign:PackIcon.RenderTransform>
+                    <RotateTransform Angle="45"/>
+                </materialDesign:PackIcon.RenderTransform>
+            </materialDesign:PackIcon>
+        </ToggleButton>
+
+        <ToggleButton x:Name="btnRelease"
+            IsChecked="False"
+            Style="{StaticResource MyToggle}"    
+            ToolTip="MaterialDesignFlatPrimaryToggleButton" Margin="210,27,49,102"
+             >
+            <materialDesign:PackIcon Kind="Pin" Height="21" Width="21" RenderTransformOrigin=".5,.5">
+                <materialDesign:PackIcon.RenderTransform>
+                    <RotateTransform Angle="90"/>
+                </materialDesign:PackIcon.RenderTransform>
+            </materialDesign:PackIcon>
+        </ToggleButton>
+
+
+        <TextBlock Margin="87,77,122,112" >点击</TextBlock>
+
+        <materialDesign:Card Padding="32" Margin="10,0,22,8" Height="94" VerticalAlignment="Bottom">
+            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">My First Material Design App</TextBlock>
+        </materialDesign:Card>
+    </Grid>
+</metro:MetroWindow>
