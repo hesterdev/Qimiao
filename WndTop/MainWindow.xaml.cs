@@ -1,7 +1,7 @@
-﻿using MahApps.Metro.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,11 +19,29 @@ namespace WndTop
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class MainWindow 
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+     
+        private void btnTop_Checked(object sender, RoutedEventArgs e)
+        {
+            btnRelease.IsChecked = false;
+            Utils.fun(this);
+        }
+
+        private void btnRelease_Checked(object sender, RoutedEventArgs e)
+        {
+            btnTop.IsChecked = false;
+            Utils.fun(this);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Utils.fun(this);
         }
     }
 }
