@@ -39,9 +39,5 @@ namespace WndTop
             Utils.fun(this);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Utils.fun(this);
-        }
     }
 }

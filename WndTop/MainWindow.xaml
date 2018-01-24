@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WndTop"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:res="clr-namespace:WndTop.Properties"
         mc:Ignorable="d"
-        Title="MainWindow" Height="268.505" Width="431.863" 
+        Title="MainWindow" Height="186" Width="300" 
         WindowStartupLocation="CenterScreen"
                    
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -18,13 +19,14 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
                    
         Topmost="True" 
-        Icon="logo.ico"
+        Icon="logo.ico" ResizeMode="CanMinimize"
         >
     <Grid>
         <ToggleButton x:Name="btnTop"
             IsChecked="False"
             Style="{StaticResource MyToggle}"    
-            ToolTip="MaterialDesignFlatPrimaryToggleButton" Margin="52,35,209,139" Checked="btnTop_Checked"
+            Margin="60,25,0,0" Checked="btnTop_Checked"
+            ToolTip="{x:Static res:Resources.btnTop}" VerticalAlignment="Top" HorizontalAlignment="Left" 
              >
             <materialDesign:PackIcon Kind="Pin" Height="21" Width="21" RenderTransformOrigin=".5,.5">
                 <materialDesign:PackIcon.RenderTransform>
@@ -36,7 +38,8 @@
         <ToggleButton x:Name="btnRelease"
             IsChecked="False"
             Style="{StaticResource MyToggle}"    
-            ToolTip="MaterialDesignFlatPrimaryToggleButton" Margin="179,35,82,139" Checked="btnRelease_Checked"
+            Margin="0,25,60,0" Checked="btnRelease_Checked"
+            ToolTip="{x:Static res:Resources.btnRelease}" VerticalAlignment="Top" Width="40" HorizontalAlignment="Right" 
              >
             <materialDesign:PackIcon Kind="Pin" Height="21" Width="21" RenderTransformOrigin=".5,.5">
                 <materialDesign:PackIcon.RenderTransform>
@@ -45,9 +48,10 @@
             </materialDesign:PackIcon>
         </ToggleButton>
 
-        <materialDesign:Card Padding="32" Margin="10,0,22,8" Height="94" VerticalAlignment="Bottom">
-            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">My First Material Design App</TextBlock>
+        <materialDesign:Card Padding="8" Margin="10,10,10,10" VerticalAlignment="Bottom" Height="60">
+            <TextBlock TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Width="250" Height="30" VerticalAlignment="Top"
+                       Margin="0,0,-2,-2" Text="{x:Static res:Resources.txtInstruct}"></TextBlock>
         </materialDesign:Card>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="26,88,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
     </Grid>
 </Window>

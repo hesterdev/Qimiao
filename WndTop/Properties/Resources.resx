@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnRelease" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="btnTop" xml:space="preserve">
+    <value>On Top</value>
+  </data>
+  <data name="txtInstruct" xml:space="preserve">
+    <value>Choose the function button, then click the target window.</value>
+  </data>
 </root>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace WndTop
 {
@@ -108,24 +109,33 @@ namespace WndTop
                 // Now you have get the handle, do what you want here
                 // …………………………………………………. 
                 using (Process curProcess = Process.GetCurrentProcess())
-                using (ProcessModule curModule = curProcess.MainModule)
                 {
-                    IntPtr hwndCur=GetModuleHandle(curModule.ModuleName);
-                    if (hwndCur != winHandle)
+                    using (ProcessModule curModule = curProcess.MainModule)
                     {
-                        if (mainWindow.btnTop.IsChecked == true)
-                        {
-                            SetWindowPos(winHandle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
-                            mainWindow.btnTop.IsChecked = false;
-                        }
+                        //IntPtr hwndCur = GetModuleHandle(curModule.ModuleName);
 
-                        if(mainWindow.btnRelease.IsChecked==true)
+                        IntPtr hwndCur = curProcess.MainWindowHandle;
+
+                        Debug.WriteLine("{0} {1}", hwndCur.ToString("X"), winHandle.ToString("X"));
+
+                        if (hwndCur != winHandle)
                         {
-                            SetWindowPos(winHandle, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
-                            mainWindow.btnRelease.IsChecked = false;
+                            if (mainWindow.btnTop.IsChecked == true)
+                            {
+                                SetWindowPos(winHandle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
+                                mainWindow.btnTop.IsChecked = false;
+                            }
+
+                            if (mainWindow.btnRelease.IsChecked == true)
+                            {
+                                SetWindowPos(winHandle, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+                                mainWindow.btnRelease.IsChecked = false;
+                            }
                         }
                     }
                 }
+
+
 
 
                 // Because the hook may occupy much memory, so remember to uninstall the hook after
