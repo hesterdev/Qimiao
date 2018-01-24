@@ -79,6 +79,15 @@ namespace WndTop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Window Pin.
+        /// </summary>
+        public static string title {
+            get {
+                return ResourceManager.GetString("title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose the function button, then click the target window..
         /// </summary>
         public static string txtInstruct {

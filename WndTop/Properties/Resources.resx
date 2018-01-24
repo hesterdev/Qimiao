@@ -123,6 +123,9 @@
   <data name="btnTop" xml:space="preserve">
     <value>On Top</value>
   </data>
+  <data name="title" xml:space="preserve">
+    <value>Window Pin</value>
+  </data>
   <data name="txtInstruct" xml:space="preserve">
     <value>Choose the function button, then click the target window.</value>
   </data>

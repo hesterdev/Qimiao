@@ -7,7 +7,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:res="clr-namespace:WndTop.Properties"
         mc:Ignorable="d"
-        Title="MainWindow" Height="186" Width="300" 
+        Title="{x:Static res:Resources.title}" 
+        Height="186" Width="300" 
         WindowStartupLocation="CenterScreen"
                    
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -48,9 +49,8 @@
             </materialDesign:PackIcon>
         </ToggleButton>
 
-        <materialDesign:Card Padding="8" Margin="10,10,10,10" VerticalAlignment="Bottom" Height="60">
-            <TextBlock TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Width="250" Height="30" VerticalAlignment="Top"
-                       Margin="0,0,-2,-2" Text="{x:Static res:Resources.txtInstruct}"></TextBlock>
+        <materialDesign:Card Padding="10" Margin="10,0,10,10" VerticalAlignment="Bottom" >
+            <TextBlock TextWrapping="Wrap" FontSize="12" Text="{x:Static res:Resources.txtInstruct}"/>
         </materialDesign:Card>
 
     </Grid>
