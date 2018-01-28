@@ -82,6 +82,28 @@ namespace WndTop
         [DllImport("user32.dll")]
         static extern IntPtr WindowFromPoint(POINT Point);
 
+        [DllImport("user32.dll")]
+        static extern IntPtr GetActiveWindow();
+
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern IntPtr GetWindow(IntPtr hWnd, uint uCmd);
+        enum GetWindow_Cmd : uint
+        {
+            GW_HWNDFIRST = 0,
+            GW_HWNDLAST = 1,
+            GW_HWNDNEXT = 2,
+            GW_HWNDPREV = 3,
+            GW_OWNER = 4,
+            GW_CHILD = 5,
+            GW_ENABLEDPOPUP = 6
+        }
+        [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto)]
+        public static extern IntPtr GetParent(IntPtr hWnd);
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool SetForegroundWindow(IntPtr hWnd);
+
+
 
         private static LowLevelMouseProc _proc = HookCallback;
         private static IntPtr _hookID = IntPtr.Zero;
@@ -103,9 +125,17 @@ namespace WndTop
 
                 IntPtr winHandle = WindowFromPoint(cusorPoint);
 
+                // Get the final parent handle of the window
+                while (true)
+                {
+                    IntPtr temp = GetParent(winHandle);
+                    if (temp.Equals(IntPtr.Zero)) break;
+                    winHandle = temp;
+                }
+                //IntPtr winHandle = GetActiveWindow();
+
+
                 // winHandle is the Hanle you need
-
-
                 // Now you have get the handle, do what you want here
                 // …………………………………………………. 
                 using (Process curProcess = Process.GetCurrentProcess())
@@ -116,7 +146,7 @@ namespace WndTop
 
                         IntPtr hwndCur = curProcess.MainWindowHandle;
 
-                        Debug.WriteLine("{0} {1}", hwndCur.ToString("X"), winHandle.ToString("X"));
+                        //Debug.WriteLine("\n周齐飞cur: {0} click: {1}", hwndCur.ToString("X"), winHandle.ToString("X"));
 
                         if (hwndCur != winHandle)
                         {
