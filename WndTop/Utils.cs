@@ -129,7 +129,8 @@ namespace WndTop
                 while (true)
                 {
                     IntPtr temp = GetParent(winHandle);
-                    if (temp.Equals(IntPtr.Zero)) break;
+                    if (temp.Equals(IntPtr.Zero))
+                        break;
                     winHandle = temp;
                 }
                 //IntPtr winHandle = GetActiveWindow();
@@ -148,19 +149,23 @@ namespace WndTop
 
                         //Debug.WriteLine("\n周齐飞cur: {0} click: {1}", hwndCur.ToString("X"), winHandle.ToString("X"));
 
-                        if (hwndCur != winHandle)
+
+                        if (mainWindow.btnTop.IsChecked == true)
                         {
-                            if (mainWindow.btnTop.IsChecked == true)
+                            if (hwndCur != winHandle)
                             {
                                 SetWindowPos(winHandle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
-                                mainWindow.btnTop.IsChecked = false;
                             }
+                            mainWindow.btnTop.IsChecked = false;
+                        }
 
-                            if (mainWindow.btnRelease.IsChecked == true)
+                        if (mainWindow.btnRelease.IsChecked == true)
+                        {
+                            if (hwndCur != winHandle)
                             {
                                 SetWindowPos(winHandle, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
-                                mainWindow.btnRelease.IsChecked = false;
                             }
+                            mainWindow.btnRelease.IsChecked = false;
                         }
                     }
                 }
